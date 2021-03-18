@@ -15,7 +15,7 @@ mkdir -p ~/.local/bin
 # Adding ~/.local/bin to PATH
 shellname=$(echo $SHELL)
 filename="${shellname##*/}rc"
-echo PATH=\$PATH:~/.local/bin >> ~/.$filename
+echo PATH=\$PATH:"~/.local/bin" >> ~/.$filename
 
 # Copying over files.
 cp note ~/.local/bin
