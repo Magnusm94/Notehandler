@@ -43,11 +43,6 @@ class Database:
         for s in schemas:
             tables.extend([f'{s}.{i[0]}' for i in self(
                 f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{s}';")])
-        # df = pd.DataFrame(self("""
-        # SELECT table_name FROM information_schema.tables
-        # WHERE table_schema = 'public' or table_schema = 'school';
-        # """))
-        # df.columns = ['table_name']
         print("\n".join(tables))
         return True
 
