@@ -3,16 +3,10 @@
 import sys, os
 import psycopg2
 import pandas as pd
+import json
 
 
-login = \
-{
-    "database": "todo",
-    "user": "magnus",
-    "password": "",
-    "host": "localhost",
-    "port": "5432"
-}
+login = json.load(open(os.path.dirname(__file__) + '/login.json', 'r'))
 
 
 class Database:
@@ -43,11 +37,6 @@ class Database:
         for s in schemas:
             tables.extend([f'{s}.{i[0]}' for i in self(
                 f"SELECT table_name FROM information_schema.tables WHERE table_schema = '{s}';")])
-        # df = pd.DataFrame(self("""
-        # SELECT table_name FROM information_schema.tables
-        # WHERE table_schema = 'public' or table_schema = 'school';
-        # """))
-        # df.columns = ['table_name']
         print("\n".join(tables))
         return True
 

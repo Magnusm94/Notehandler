@@ -36,7 +36,7 @@ def update(noteID, string):
     return True
 
 
-def new_subject():
+def new_table():
     try:
         pg(f"""
         CREATE TABLE {table} (noteID SERIAL, note TEXT UNIQUE NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(3));
@@ -67,7 +67,7 @@ def main(args):
     pg = Database()
 
     if parameter in ['create', '--create', '-c']:
-        if new_subject():
+        if new_table():
             return True
 
     elif parameter in ['-n', '--new', 'new']:
