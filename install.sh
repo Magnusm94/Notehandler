@@ -12,6 +12,11 @@ chmod +x db_datagenerator.py
 # Creating required directories if not exists.
 mkdir -p ~/.local/bin
 
+# Adding ~/.local/bin to PATH
+shellname=$(echo $SHELL)
+filename="${shellname##*/}rc"
+echo PATH=$"PATH":~/.local/bin >> ~/.$filename
+
 # Copying over files.
 cp note ~/.local/bin
 cp -r notehandler ~/.local/bin
@@ -29,3 +34,5 @@ sudo -iu postgres psql postgres -c "CREATE DATABASE mynotes OWNER $user;"
 
 # Restarting postgresql.
 sudo systemctl restart postgresql.service
+
+source ~/.$filename
