@@ -21,11 +21,11 @@ sudo pacman -S postgresql --needed --noconfirm
 sudo -iu postgres initdb -D /var/lib/postgres/data
 
 # Enabling postgresql on boot
-systemctl enable --now postgresql.service
+sudo systemctl enable --now postgresql.service
 
 # Creating postgres user and database.
 sudo -iu postgres psql postgres -c "CREATE ROLE $user login;"
 sudo -iu postgres psql postgres -c "CREATE DATABASE mynotes OWNER $user;"
 
 # Restarting postgresql.
-systemctl restart postgresql.service
+sudo systemctl restart postgresql.service
