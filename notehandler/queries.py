@@ -6,12 +6,14 @@ sys.path.append(os.path.dirname(__file__))
 from database import Database
 import pandas as pd
 
+
 def new():
     pg(f"""
     INSERT INTO {table} (note)
     VALUES ('{string}');
     """)
     return True
+
 
 def search():
     df = pd.DataFrame(pg(f"SELECT * FROM {table} ORDER BY noteID;"))
@@ -21,11 +23,13 @@ def search():
         return True
     return None
 
+
 def delete(noteID):
     pg(f"""
     DELETE FROM {table} WHERE noteID = {noteID};
     """)
     return True
+
 
 def update(noteID, string):
     pg(f"""
