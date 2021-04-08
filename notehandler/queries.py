@@ -56,7 +56,7 @@ def new_table():
         CREATE SCHEMA {schema};
         """)
         print(f'Created new schema {schema}')
-        new_subject()
+        new_table()
 
 
 def main(args):
